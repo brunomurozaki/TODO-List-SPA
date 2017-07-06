@@ -1,21 +1,13 @@
 <template>
-  <div class="schedule">
-    <header-component></header-component>
-    <calendar-component></calendar-component>
+  <div class="daily">
+    DIA
   </div>
 </template>
 
 <script>
 
-import HeaderComponent from './ScheduleHeader.vue'
-import CalendarComponent from './Calendar.vue'
-
 export default {
-  name: 'schedule',
-  components: {
-    HeaderComponent,
-    CalendarComponent
-  }
+  name: 'daily'
 }
 </script>
 
