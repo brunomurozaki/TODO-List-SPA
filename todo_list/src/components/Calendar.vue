@@ -1,19 +1,39 @@
 <template>
   <div class="calendar">
-    <weekly-component v-if='type === "semana"'></weekly-component>
-    <monthly-component v-if='type === "dia"'></monthly-component>
-    <daily-component v-if='type === "mes"'></daily-component>
+    <div class="menuWrapper">
+      <div class="taskOptions">
+        <button class="btn">Add Task</button>
+      </div>
+      <div class="scheduleOptions">       
+        <button v-on:click='type = "dia"' class="btn">Dia</button>
+        <button v-on:click='type = "semana"' class="btn">Semana</button>
+        <button v-on:click='type = "mes"' class="btn">Mes</button>
+      </div>
+    </div>
+    <div class="container" v-if='type === "semana"'>
+      <weekly-component></weekly-component>
+    </div>
+    <div class="container" v-if='type === "mes"'>
+      <monthly-component></monthly-component>
+    </div>
+    <div class="container" v-if='type === "dia"'>
+      <daily-component></daily-component>
+    </div>
   </div>
 </template>
 
 <script>
 
-import eventHub from '../shared/EventHub.js'
 import WeeklyComponent from './calendar_components/Weekly.vue'
 import DailyComponent from './calendar_components/Daily.vue'
 import MonthlyComponent from './calendar_components/Monthly.vue'
 
 export default {
+  vuex: {
+    getters: {
+      calendarType: state => state.calendarType
+    }
+  },
   name: 'calendar',
   data: function () {
     return {
@@ -24,12 +44,6 @@ export default {
     WeeklyComponent,
     MonthlyComponent,
     DailyComponent
-  },
-  mounted: function () {
-    eventHub.$on('onCalendarTypeChange', function (data) {
-      alert(this.type)
-      this.type = data
-    })
   }
 }
 </script>

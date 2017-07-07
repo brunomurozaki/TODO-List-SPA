@@ -1,13 +1,23 @@
 <template>
   <div class="weekly">
-    SEMANA
+    <div class="weekWrapper">
+      <div v-for="day in days" class="weekDayBox">
+        <div class="boxHeader">{{ day }}</div>
+        <div class="boxContent"></div>
+      </div>
+    </div> 
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'weekly'
+  name: 'weekly',
+  data: function () {
+    return {
+      days: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
+    }
+  }
 }
 </script>
 

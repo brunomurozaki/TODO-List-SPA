@@ -1,13 +1,20 @@
 <template>
   <div class="monthly">
-    MES
+    <div v-for="i in daysCount" class="monthlyDayBox">
+      {{i}}
+    </div>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'monthly'
+  name: 'monthly',
+  data: function () {
+    return {
+      daysCount: 30
+    }
+  }
 }
 </script>
 
