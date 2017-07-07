@@ -1,8 +1,6 @@
 <template>
   <div class="monthly">
-    <div v-for="i in daysCount" class="monthlyDayBox">
-      {{i}}
-    </div>
+    
   </div>
 </template>
 
@@ -12,7 +10,8 @@ export default {
   name: 'monthly',
   data: function () {
     return {
-      daysCount: 30
+      daysCount: new Date(new Date().getYear(), new Date().getMonth(), 0).getDate(),
+      weekDays: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
     }
   }
 }
